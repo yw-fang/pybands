@@ -208,7 +208,7 @@ def bandplot(kpath, bands, efermi, kpt_bounds, opts, whts=None):
             for Iband in range(nbands):
                 lc = None if Iband == 0 else line.get_color()
                 line, = ax.plot(kpath, bands[Ispin, :, Iband], lw=opts.linewidth, zorder=0,
-                                alpha=0.8,
+                                alpha=0.8,  #test
                                 color=lc,
                                 )
                 if whts is not None:
@@ -452,6 +452,7 @@ if __name__ == '__main__':
     # Use non-interactive backend in case there is no display
     mpl.use('agg')
     import matplotlib.pyplot as plt
+    plt.style.use('seaborn-bright')  # https://qiita.com/eriksoon/items/b93030ba4dc686ecfbba
     mpl.rcParams['axes.unicode_minus'] = False
     mpl.rcParams["axes.linewidth"]  = 2.0 #change the boarder width
     mpl.rcParams['legend.fancybox'] = True
