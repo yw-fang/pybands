@@ -443,7 +443,6 @@ if __name__ == '__main__':
         bands -= opts.efermi
 
     import matplotlib as mpl
-    mpl.style.use('classic')
     from matplotlib.ticker import AutoMinorLocator
     # Use non-interactive backend in case there is no display
     mpl.use('agg')
