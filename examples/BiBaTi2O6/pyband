@@ -240,9 +240,14 @@ def bandplot(kpath, bands, efermi, kpt_bounds, opts, whts=None):
         ax.set_xticklabels([])
 
     ax.yaxis.set_minor_locator(AutoMinorLocator(2))
+    ax.tick_params(direction='in', length=5, width=1.5, colors='k', which='major',
+                grid_color='grey', grid_alpha=0.7, top=True, right=True)
+    ax.tick_params(direction='in', length=5, width=1.5, colors='k', which='minor',
+                grid_color='grey', grid_alpha=0.7, top=False, right=False,
+                   bottom=False, left=False)
     ax.axhline(y=0, color='r', linestyle='-')
 
-    plt.tight_layout(pad=0.0)
+    plt.tight_layout(pad=0.8)
     plt.savefig(opts.bandimage, dpi=opts.dpi)
 
 ############################################################
