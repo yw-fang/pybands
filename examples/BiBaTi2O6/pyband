@@ -152,7 +152,7 @@ def bandplot(kpath, bands, efermi, kpt_bounds, opts, whts=None):
 
     nspin, nkpts, nbands = bands.shape
 
-    clrs = ['r', 'b']
+#    clrs = ['r', 'b']
 
     if opts.occLC and (whts is not None):
         from matplotlib.collections import LineCollection
@@ -240,8 +240,9 @@ def bandplot(kpath, bands, efermi, kpt_bounds, opts, whts=None):
         ax.set_xticklabels([])
 
     ax.yaxis.set_minor_locator(AutoMinorLocator(2))
+    ax.axhline(y=0, color='r', linestyle='-')
 
-    plt.tight_layout(pad=0.20)
+    plt.tight_layout(pad=0.0)bel
     plt.savefig(opts.bandimage, dpi=opts.dpi)
 
 ############################################################
@@ -447,6 +448,8 @@ if __name__ == '__main__':
     mpl.use('agg')
     import matplotlib.pyplot as plt
     mpl.rcParams['axes.unicode_minus'] = False
+    mpl.rcParams["axes.linewidth"]  = 2.0 #change the boarder width
+
 
     bandplot(kpath, bands, efermi, kpt_bounds, opts, whts)
     saveband_dat(kpath, bands)
