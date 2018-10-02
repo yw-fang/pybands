@@ -207,9 +207,10 @@ def bandplot(kpath, bands, efermi, kpt_bounds, opts, whts=None):
         for Ispin in range(nspin):
             for Iband in range(nbands):
                 lc = None if Iband == 0 else line.get_color()
+                print('lc is', lc)
                 line, = ax.plot(kpath, bands[Ispin, :, Iband], lw=opts.linewidth, zorder=0,
-                                alpha=0.8,  #test
-                                color=lc,
+                                alpha=0.8,
+                                color=lc
                                 )
                 if whts is not None:
                     for ii in range(len(opts.occ)):
@@ -246,6 +247,16 @@ def bandplot(kpath, bands, efermi, kpt_bounds, opts, whts=None):
                 grid_color='grey', grid_alpha=0.7, top=False, right=False,
                    bottom=False, left=False)
     ax.axhline(y=0, color='r', linestyle='-')
+    blue_line = mlines.Line2D([], [], color='#003FFF',markersize=15, label='up', alpha=0.8, lw = 2.0)
+    green_line = mlines.Line2D([], [], color='#03ED3A', markersize=15, label='down', alpha=0.8, lw = 2.0)
+    ax.legend(handles=[blue_line,green_line],bbox_to_anchor=(0, 1.02, 1, 0.1),  loc='lower left', borderaxespad=0.,
+              ncol=2)
+    # ax.legend(loc="best")
+    # ax.legend(['up', 'down'], loc="best")
+    # ax.legend(["blue", "green"], ['up', 'down'], loc="best")
+    # ax.legend(line[:2], ['up', 'down'])
+    # ax.legend((line,'up', 'down'))
+    # ax.legend(['down'])
 
     plt.tight_layout(pad=0.8)
     plt.savefig(opts.bandimage, dpi=opts.dpi)
@@ -315,7 +326,7 @@ def command_line_arg():
 
     par.add_option('-y', nargs=2,
             action='store', type="float", dest='ylim',
-            default=(-14, 8),
+            default=(-15, 10),
             help='energy range of the band plot')
 
     par.add_option('--lw',
@@ -448,6 +459,7 @@ if __name__ == '__main__':
         bands -= opts.efermi
 
     import matplotlib as mpl
+    import matplotlib.lines as mlines  # ywfang
     from matplotlib.ticker import AutoMinorLocator
     # Use non-interactive backend in case there is no display
     mpl.use('agg')
