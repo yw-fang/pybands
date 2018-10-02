@@ -242,7 +242,7 @@ def bandplot(kpath, bands, efermi, kpt_bounds, opts, whts=None):
     ax.yaxis.set_minor_locator(AutoMinorLocator(2))
     ax.axhline(y=0, color='r', linestyle='-')
 
-    plt.tight_layout(pad=0.0)bel
+    plt.tight_layout(pad=0.0)
     plt.savefig(opts.bandimage, dpi=opts.dpi)
 
 ############################################################
@@ -443,12 +443,18 @@ if __name__ == '__main__':
         bands -= opts.efermi
 
     import matplotlib as mpl
+    mpl.style.use('classic')
     from matplotlib.ticker import AutoMinorLocator
     # Use non-interactive backend in case there is no display
     mpl.use('agg')
     import matplotlib.pyplot as plt
     mpl.rcParams['axes.unicode_minus'] = False
     mpl.rcParams["axes.linewidth"]  = 2.0 #change the boarder width
+    mpl.rcParams['legend.fancybox'] = True
+    mpl.rcParams['legend.fontsize'] = 19
+    ticklabel_size = 19
+    mpl.rcParams['xtick.labelsize'] = ticklabel_size
+    mpl.rcParams['ytick.labelsize'] = ticklabel_size
 
 
     bandplot(kpath, bands, efermi, kpt_bounds, opts, whts)
