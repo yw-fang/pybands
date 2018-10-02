@@ -220,7 +220,7 @@ def bandplot(kpath, bands, efermi, kpt_bounds, opts, whts=None):
                                 alpha=0.5)
 
     for bd in kpt_bounds:
-        ax.axvline(x=bd, ls='-', color='k', lw=0.5, alpha=0.5)
+        ax.axvline(x=bd, ls='-', color='grey', lw=1, alpha=0.5)
 
     ax.set_ylabel('Energy (eV)', fontsize= 22,
             labelpad=5)
