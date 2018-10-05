@@ -249,7 +249,7 @@ def bandplot(kpath, bands, efermi, kpt_bounds, opts, whts=None):
     ax.axhline(y=0, color='r', linestyle='-')
     blue_line = mlines.Line2D([], [], color='#003FFF',markersize=15, label='up', alpha=0.8, lw = 2.0)
     green_line = mlines.Line2D([], [], color='#03ED3A', markersize=15, label='down', alpha=0.8, lw = 2.0)
-    ax.legend(handles=[blue_line,green_line],bbox_to_anchor=(0, 1.02, 1, 0.1),  loc='lower left', borderaxespad=0.,
+    ax.legend(handles=[blue_line,green_line],bbox_to_anchor=(0, 1.02, 1, 0.1),  loc='lower center', borderaxespad=0.,
               ncol=2)
     # ax.legend(loc="best")
     # ax.legend(['up', 'down'], loc="best")
@@ -311,7 +311,7 @@ def command_line_arg():
 
     par.add_option('-o', '--output',
             action='store', type="string", dest='bandimage',
-            default='bands.pdf',
+            default='bands-narrow.pdf',
             help='output image name, "bands.pdf" by default')
 
     par.add_option('-k', '--kpoints',
@@ -326,7 +326,7 @@ def command_line_arg():
 
     par.add_option('-y', nargs=2,
             action='store', type="float", dest='ylim',
-            default=(-15, 10),
+           default=(-0.5, 0.5),
             help='energy range of the band plot')
 
     par.add_option('--lw',
