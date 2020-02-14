@@ -260,13 +260,14 @@ def bandplot(kpath, bands, efermi, kpt_bounds, opts, whts=None):
         ax.axvline(x=bd, ls='-', color='k', lw=3, alpha=1)
 
     ax.yaxis.set_minor_locator(AutoMinorLocator(2))
-    ax.tick_params(direction='in', length=6, width=3.0, color='black', which='major',labelcolor='k',
+    ax.tick_params(direction='in', length=8, width=3.0, color='black', which='major',labelcolor='k',
                 grid_color='grey', grid_alpha=0.7, top=True, right=True)
-    ax.tick_params(direction='in', length=6, width=3.0, color='black', which='minor',labelcolor='k',
+    ax.tick_params(direction='in', length=8, width=3.0, color='black', which='minor',labelcolor='k',
                 grid_color='grey', grid_alpha=0.7, top=False, right=False,
                    bottom=False, left=False)
 
-    # ax.axhline(y=0, color='r', linestyle='--')
+    if opts.zero_line:
+        ax.axhline(y=0, color='k', linestyle='--', lw=2)
     # blue_line = mlines.Line2D([], [], color='#003FFF',markersize=55, label='_nolegend_', alpha=0.8, lw = 2.0)
     blue_line = mlines.Line2D([], [], color='blue',markersize=55, label='up', alpha=1.0, lw = 3.5)
     # green_line = mlines.Line2D([], [], color='#03ED3A', markersize=55, label='_nolegend_', alpha=0.8, lw = 2.0)
